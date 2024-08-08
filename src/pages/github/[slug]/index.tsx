@@ -17,14 +17,17 @@ const Page = ({slug}: any) => {
   return (
     <>
       <Head>
-        <title>GitHub Info</title>
+        <title>Link preview</title>
         <meta
           property="og:image"
           content={`https://link-preview-poc.netlify.app/api/og/${slug}`}
         />
-        <meta name="og:title" content="GitHub Info" />
-        <meta name="og:description" content="GitHub Info" />
-        <meta name="og:url" content="GitHub Info" />
+        <meta property="og:type" content="Link preview info" />
+        <meta property="og:title" content="Link preview info" />
+        <meta property="og:url" content={`https://link-preview-poc.netlify.app/github/${slug}`} />
+        <meta property="og:image:width" content="800"></meta>
+        <meta property="og:image:height" content="488"></meta>
+        <meta property="og:type" content="object"></meta>
       </Head>
       <Info />;
     </>
