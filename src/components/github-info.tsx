@@ -16,10 +16,18 @@ const Info = () => {
     }
   }, [router.query.slug]);
 
+  const imageSrc =
+    router?.query?.slug === "thumbnail"
+      ? "https://link-preview-poc.netlify.app/thumbnail.svg"
+      : user?.avatar_url;
+  const name = router?.query?.slug === "thumbnail" ? "Thumbnail" : user?.name;
+  const login = router?.query?.slug === "thumbnail" ? "thumbnail" : user?.login;
+
   return (
     <div>
       <img
-        src={user?.avatar_url}
+        // src={user?.avatar_url}
+        src={imageSrc}
         style={{
           width: 200,
           height: 200,
@@ -27,8 +35,8 @@ const Info = () => {
           marginBottom: 20,
         }}
       />
-      <p>{`${user?.name}`}</p>
-      <p>{`@${user?.login}`}</p>
+      <p>{name}</p>
+      <p>{`@${login}`}</p>
     </div>
   );
 };

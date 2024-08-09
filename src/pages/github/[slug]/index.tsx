@@ -52,7 +52,7 @@ const Page = ({ slug }: any) => {
           content={`https://link-preview-poc.netlify.app/api/og/${slug}`}
         />
       </Head>
-      <Info />;
+      <Info />
     </>
   );
 };
