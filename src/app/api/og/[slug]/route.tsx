@@ -2,15 +2,17 @@ import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
 
-const size = {
-  width: 650,
-  height: 400,
-};
+const size = { width: 1200, height: 630 };
 
-export  async function GET(_: any, {params}: any) {
+export async function GET(_: any, { params }: any) {
   const user = await fetch(`https://api.github.com/users/${params.slug}`).then(
     (res) => res.json()
   );
+
+  const imageSrc =
+    params.slug === "thumbnail"
+      ? "https://link-preview-poc.netlify.app/thumbnail.svg"
+      : user.avatar_url;
 
   return new ImageResponse(
     (
@@ -30,7 +32,7 @@ export  async function GET(_: any, {params}: any) {
           }}
         >
           <img
-            src={user.avatar_url}
+            src={imageSrc}
             style={{
               width: 200,
               height: 200,
@@ -85,11 +87,7 @@ export  async function GET(_: any, {params}: any) {
                   display: "flex",
                 }}
               >
-                <p
-                  
-                >
-                  Email
-                </p>
+                <p>Email</p>
                 <p>:</p>
                 <p
                   style={{
@@ -104,11 +102,7 @@ export  async function GET(_: any, {params}: any) {
                   display: "flex",
                 }}
               >
-                <p
-                  
-                >
-                  Blog
-                </p>
+                <p>Blog</p>
                 <p>:</p>
                 <p
                   style={{
@@ -123,11 +117,7 @@ export  async function GET(_: any, {params}: any) {
                   display: "flex",
                 }}
               >
-                <p
-                  
-                >
-                  Location
-                </p>
+                <p>Location</p>
                 <p>:</p>
                 <p
                   style={{
